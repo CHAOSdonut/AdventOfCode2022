@@ -34,4 +34,9 @@ data.forEach(value => {
 })
 elves.push(elfTotal)
 
-console.log(Math.max(...elves));
+console.log(`Calories of the highest calorie carrying elf: ${Math.max(...elves)}`);
+
+elves.sort(function(a, b){return b - a});
+const top1ProcentOfElves = elves[0] + elves[1] + elves[2]
+
+console.log(`Total calories of top 3 elves: ${top1ProcentOfElves}`);
