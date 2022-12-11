@@ -3,7 +3,7 @@ import fs from "fs";
 const testInput = fs.readFileSync("../input/day11test", "utf-8");
 const trueInput = fs.readFileSync("../input/day11Input", "utf-8");
 
-const input = testInput.split('\r\n\r\n')
+const input = trueInput.split('\r\n\r\n')
 let monkeyNotes = []
 monkeyNotes.push()
 input.forEach(monkey => {
@@ -33,6 +33,13 @@ class Monkey {
             worry = eval(v1 + this.operation[3] + v2)
             if(divideBy3) {
                 worry = Math.floor(worry / 3)
+            }
+            else {
+                let productOfDevision = 1
+                monkeys.forEach(monkey =>{
+                    productOfDevision *= monkey.test
+                })
+                worry = worry%productOfDevision
             }
 
             if(worry%this.test === 0){
